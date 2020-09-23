@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.js"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,600");
+  </style>
+  <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="graphic">
+    <div class="fixed">
+      <div id="explore-container">
+        <div>
+          <button id="weatherExplore">Weather Conditions</button>
+          <button id="makeExplore">Make of Aircraft</button>
+          <button id="modelExplore">Model of Aircraft</button>
+          <button id="phaseExplore">Flight Phase</button>
+        </div>
+        <svg id="explore-svg" class="graph"></svg>
+      </div>
+      <svg id="timeline" class="graph"></svg>
+    </div>
+
+    <div class="description">
+      <div id="start" class="page">
+        <h2>
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          Let's take a closer look at <strong>1,987</strong> aircraft incidents
+          from <strong>January 1, 1995</strong> to
+          <strong>June 26, 2016</strong>
+        </h2>
+        <br />
+        <p>
+          The manufacturers of the aircrafts involved in these incidents were
+          any of the following: Bombardier, Boeing, McDonnell-Douglas, Embraer,
+          or Airbus.<br /><br />
+          When there is an aircraft incident, the number of people injured by
+          said incident is reported. This metric is made up of both serious and
+          fatal injuries. <br /><br />
+          The total number of injuries over time, as seen to the left, does not
+          appear to have any easily-discernable of trend line. Although it does
+          appear to taper off from <strong>2010</strong> on, with
+          <strong>2014</strong> being an exception. There are particularly high
+          years, such as <strong>1996</strong> and particularly low years such
+          as <strong>2011</strong>
+        </p>
+      </div>
+      <div id="bombardierAll" class="page">
+        <h2>Let's look closer at <strong>Bombardier</strong></h2>
+        <br />
+        <p>
+          If we filter the data to examine only incidents involving
+          <strong>Bombardier</strong>
+          manufactured aircraft, we get what we see to the left. As we can see,
+          a small fraction of all injuries from these incidents involved
+          Bombardier aircraft. <br /><br />
+          <strong>Bombardier</strong> is a Canadian transportation manufacturer.
+          <strong>Bombardier</strong> has historically been a small player in
+          commercial airliners. Much of the aircraft they manufacture are
+          private jets. In fact, they have
+          <strong
+            ><a
+              href="https://www.cnn.com/2019/06/26/business/bombardier-regional-jets/index.html"
+              >recently</a
+            ></strong
+          >
+          removed themselves from commercial airline manufacturing altogether.
+          <br /><br />
+          The underrepresentation of their aircraft in commercial airline fleets
+          is likely why their number of injuries are so low. Incidents involving
+          private jets will injure fewer people than those involving commercial
+          ones.
+        </p>
+    </div>
+      <div id="embraerAll" class="page">
+        <h2>
+          Now let's take a closer look at <strong>Embraer</strong><br /><br />
+        </h2>
+        <p>
+          <strong>Embraer</strong> is another smaller player in aircraft
+          manufacturing. They are a Brazilian company which manufactures
+          commercial, military, private, and agricultural aircraft. The
+          commercial aircraft they manufacture are largely small regional jets
+          which often hold from 70 to 124 passengers.<br /><br />
+          As one of the smaller manufacturers, both in representation in the
+          industry and in size of products, <strong>Embraer</strong> would be
+          expected to have some of the lowest injury counts by year of the five
+          manufacturers explored here. And this proves to be the case, as seen
+          to the left.<br /><br />
+          <strong>Embraer</strong> does appear to be poised to grow their
+          position in the commercial aircraft industry, however. As was recently
+          announced in 2019, a <a href="https://boeing.mediaroom.com/2019-10-03-Boeing-Embraer-Strategic-Partnership-Taking-Shape"></a>joint venture</a> between
+          <strong>Embraer</strong> and <strong>Boeing</strong>
+          is under works.
+        </p>
+      </div>
+      <div id="mcdonnellAll" class="page">
+            <h2>
+              Let's take a closer look at
+              <strong>McDonnell Douglas</strong><br /><br />
+            </h2>
+            <p>
+              <strong>McDonnell Douglas</strong> is an American manufactuer of
+              commercial and military aircraft. It was purchased by
+              <strong>Boeing</strong> in <strong>1997</strong>, which is now it's
+              parent company. <br /><br />
+              In the realm of commercial aircraft,
+              <strong>McDonnell Douglas</strong> tends to make mid-size aircraft
+              that are used for <strong>regional service</strong>. As a result, they
+              tend to carry fewer passengers than other larger players like
+              <strong>Airbus</strong> and <strong>Boeing</strong>. For example, one
+              of their most popular jets is the MD-83, which has a maximum passenger
+              capacity of 155. <br /><br />So their total injuries should be
+              expected to be lower overall. There are a few years where they rival
+              <strong>Airbus</strong>, however.
+            </p>
+        </div>
+      <div id="airbusAll" class="page">
+        <h2>Let's take a closer look at <strong>Airbus</strong><br /><br /></h2>
+        <p>
+          <strong>Airbus</strong> is a European aircraft manufacturer. As one of
+          the
+          <a href="https://dretloh.com/commercialaircraft/">largest</a>
+          commercial aircraft manufacturer in the world,
+          <strong>Airbus</strong> manufactured jets carry hundreds of thousands
+          of parssengers every day.The most popular <strong>Airbus</strong> jet
+          is the A380, which has a capacity of 853 passengers. <br /><br />
+
+          Likely because of the volume of passengers they ferry every day, they
+          have much higher reported injuries than smaller aircraft manufacturing
+          players like Embraer and Bombardier. <br /><br />
+          As seen to the left, their peak year for injuries was
+          <strong>2009</strong>. Again, There doesn't look to be a discernable
+          trend. <strong>Airbus</strong> has very low years and very high years.
+          This suggests that crashes are uncommon, and a single one will raise
+          their numbers significantly for that year. Particularly since the
+          capacity of their jets is so high.
+        </p>
+      </div>
+
+    <div id="boeingAll" class="page">
+      <h2>But what about <strong>Boeing</strong>?<br /><br/></h2>
+      <p><strong>Boeing</strong>, an American aircraft manufacturer, is currently the largest manufacturer of commercially-used aircraft. With over 40%
+      of the commercial aircraft in use today being of strong>Boeing</strong>-make. As mentioned earlier, they
+      continue to grow their reach with mergers and strategic partnerships worldwide.<br/><br/>
+      As such a large manufactuer, you would expect <strong>Boeing</strong> to have among the highest
+      rates of injury out of the five manufacturers explored. When your aircraft make up over 40% of the market, they'll
+      also be involved in many of the crashes. Adding to this likelihood is the size of their aircraft.
+      Their one of their most popular jets, for example, the <strong>Boeing 777</strong> has a passenger capacity of
+      <strong>550</strong>.<br/><br/>
+      Boeing has had a bad time of it recently, with the disasters involving the <a href="https://www.reuters.com/article/us-boeing-airplane/faa-chief-to-testify-at-dec-11-u-s-house-hearing-on-boeing-737-max-idUSKBN1Y622P">Boeing 737 MAX</a>. In general, however, excluding a few outlier years, their injuries have been trending downward since their peak in <strong>1996</strong>. 1996 was the year of the TWA Flight 800 crash,
+      the <a href="https://en.wikipedia.org/wiki/TWA_Flight_800">third-deadliest</a> aviation incident in American history and the Faucett Flight 251 crash, the <a href="https://en.wikipedia.org/wiki/Faucett_Flight_251">deadliest</a> aircraft accident in
+      Peruvian history. <br/><br/>
+
+
+   </p>
+    </div>
+
+      <div id="explore" class="page">
+        <h2>Explore the data yourself.</h2>
+        <p>Use the buttons to the left to explore how other factors may affect aircraft incident injuries. <br/><br/>
+        <strong>Weather Conditions:</strong><br/> <strong>VMC</strong> stands for <strong>Visual Meteorological Conditions</strong>. These are conditions where pilots have sufficient visibility to fly an aircraft maintaining visual separation from terrain and other aircraft.
+    </strong> <br/><strong>IMC</strong> stands for <strong>Instrument Meteorological Conditions</strong> These are conditions in which pilots are required to fly primarily by reference to instruments as opposed to visual references. <br/>Incidents labeled <strong>UNK</strong> had unknown or unspecified conditions.
+    <br/><br/><strong>Make of Aircraft:</strong><br/>The five different manufacturers explored previously in this visualization.
+    <br/><br/><strong>Model of Aircraft:</strong><br/>These are the different models from all of the five manufacturers explored in this visualization.<br/><br/>
+     <strong>Flight Phase</strong><br/>
+     The phase of flight the aircraft was reported to be in when the incident occured, from takeoff to landing.
+
+
+</p>
+</div>
+    </div>
+  </div>
+
+  <!-- script -->
+  <script type="text/javascript" src="timeline.js"></script>
+  <script type="text/javascript" src="explore.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
